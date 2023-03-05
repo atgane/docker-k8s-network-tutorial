@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myflask-deployment
+  labels:
+    app: myflask
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myflask
+  template:
+    metadata:
+      labels:
+        app: myflask
+    spec:
+      containers:
+      - name: myflask1
+        image: localhost:5001/myflask1:1.0
+        ports:
+        - containerPort: 8000
+      - name: myflask2
+        image: localhost:5001/myflask2:1.0
+        ports:
+        - containerPort: 8001
